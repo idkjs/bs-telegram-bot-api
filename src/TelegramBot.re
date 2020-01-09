@@ -6,6 +6,7 @@ type onEvent('a) = (string, listener('a)) => unit;
 
 type startPollingOptions =
   | Option({. restart: bool});
+
 type stopPollingOptions =
   | Option(
       {
@@ -25,8 +26,3 @@ let onMessage = (bot: t, event: listener('a)): unit =>
   on(bot, "message", event);
 
 let create = (~token: string, options): t => createBot(token, options);
-
-type options = {
-  polling: option(bool),
-  webHook: option(bool),
-};
